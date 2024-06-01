@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
@@ -22,6 +23,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserEntity save(UserDto userDto) {
+        if(userDto.getStatus()==null){
+            userDto.setStatus("customer");
+        }
         return repository.save(mapper.convertValue(userDto,UserEntity.class));
     }
 
@@ -41,4 +45,15 @@ public class UserServiceImpl implements UserService {
                 .collect(Collectors.toList());
     }
 
+    @Override
+    public UserDto authUser(UserDto dto) {
+        Optional<UserEntity> userByEmail = repository.findByEmail(dto.getEmail());
+        if (userByEmail.isPresent()) {
+            UserEntity user = userByEmail.get();
+            if (user.getPassword().equals(dto.getPassword())) {
+                return mapper.convertValue(user, UserDto.class);
+            }
+        }
+        return null;
+    }
 }

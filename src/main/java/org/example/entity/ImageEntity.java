@@ -1,9 +1,6 @@
 package org.example.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,13 +11,11 @@ import lombok.ToString;
 @NoArgsConstructor
 @Entity
 @ToString
-public class ProductEntity {
-
+public class ImageEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private double price;
-    private String name;
-    private String type;
-    private Long modelId;
+    private String originalName;
+    private String newName;
+
 }
