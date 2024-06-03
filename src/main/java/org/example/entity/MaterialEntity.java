@@ -8,23 +8,20 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-import org.example.dto.MaterialDto;
-
-import java.util.List;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
 @ToString
-public class ProductEntity {
-
+public class MaterialEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private double price;
+    private Long modelId;
     private String name;
-    private String type;
-    private String images;
-
+    private String color;
+    private String texture;
+    private double repeate;
+    private String visible;
 }

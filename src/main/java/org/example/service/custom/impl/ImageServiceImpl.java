@@ -3,24 +3,22 @@ package org.example.service.custom.impl;
 import org.example.entity.ImageEntity;
 import org.example.repository.ImageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
 @Service
-public class ImageService {
+public class ImageServiceImpl {
 
     @Autowired
     ImageRepository repository;
-    private String storageLocation="C:\\Thiwanka\\projects\\backend\\Ar Project\\ArProject\\src\\main\\resources\\img";
+    private String storageLocation="src\\main\\resources\\img";
 
     public String saveImage(MultipartFile file) throws IOException {
         ImageEntity entity=new ImageEntity();
@@ -34,7 +32,7 @@ public class ImageService {
         Path filePath = Paths.get(storageLocation, newFileName);
         Files.copy(file.getInputStream(), filePath);
 
-        return newFileName;
+        return String.valueOf(savedEntity.getId());
     }
 
     public Resource getImage(Long id) throws IOException  {

@@ -4,16 +4,15 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ProductDto {
+public class MaterialDto {
     private Long id;
-    private double price;
+    private Long modelId;
     private String name;
-    private String type;
-    private String images;
-    private List<MaterialDto> materials;
+    private String color;
+    private String texture;
+    private double repeate;
+    private String visible;
 }

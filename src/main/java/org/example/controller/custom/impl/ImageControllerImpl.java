@@ -1,6 +1,6 @@
 package org.example.controller.custom.impl;
 
-import org.example.service.custom.impl.ImageService;
+import org.example.service.custom.impl.ImageServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
@@ -10,30 +10,29 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
-import java.sql.SQLOutput;
 
 @CrossOrigin
 @RestController
 @RequestMapping("/images")
-public class ImageController {
+public class ImageControllerImpl {
     @Autowired
-    private ImageService imageService;
+    private ImageServiceImpl imageServiceImpl;
 
     @PostMapping("/upload")
     public ResponseEntity<String> uploadImage(@RequestParam("file") MultipartFile file) {
         try {
-            String fileName = imageService.saveImage(file);
-            return ResponseEntity.status(HttpStatus.CREATED).body("Image saved with name: " + fileName);
+            String id = imageServiceImpl.saveImage(file);
+            return ResponseEntity.status(HttpStatus.CREATED).body(id);
         } catch (IOException e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error saving image: " + e.getMessage());
         }
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Resource> getImage(@PathVariable String id) {
+    public ResponseEntity<Resource> getImage(@PathVariable Long id) {
         try {
 
-            Resource file = imageService.getImage(Long.valueOf(id));
+            Resource file = imageServiceImpl.getImage(id);
             if(file==null){
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
             }
@@ -46,8 +45,8 @@ public class ImageController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteImage(@PathVariable String id) {
-        boolean deleted = imageService.deleteImage(Long.valueOf(id));
+    public ResponseEntity<String> deleteImage(@PathVariable Long id) {
+        boolean deleted = imageServiceImpl.deleteImage(id);
         if (deleted) {
             return ResponseEntity.status(HttpStatus.NO_CONTENT).body("Image deleted successfully");
         } else {
