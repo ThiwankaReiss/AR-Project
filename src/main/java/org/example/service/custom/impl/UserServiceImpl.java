@@ -16,10 +16,11 @@ import java.util.stream.StreamSupport;
 
 @Service
 public class UserServiceImpl implements UserService {
-    @Autowired
-    ObjectMapper mapper;
+
     @Autowired
     UserRepository repository;
+    @Autowired
+    ObjectMapper mapper;
 
     @Override
     public UserEntity save(UserDto userDto) {

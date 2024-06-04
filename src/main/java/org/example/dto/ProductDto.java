@@ -14,6 +14,6 @@ public class ProductDto {
     private double price;
     private String name;
     private String type;
-    private String images;
+    private List<Integer> images;
     private List<MaterialDto> materials;
 }

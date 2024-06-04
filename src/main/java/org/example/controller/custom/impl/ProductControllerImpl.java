@@ -6,10 +6,7 @@ import org.example.entity.ProductEntity;
 import org.example.service.custom.ProductService;
 import org.example.service.custom.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 @RestController
@@ -27,9 +24,9 @@ public class ProductControllerImpl implements ProductController {
     public boolean delete(Long value) {
         return false;
     }
-
+    @GetMapping("/model")
     @Override
     public List<ProductDto> getAll() {
-        return List.of();
+        return service.getAll();
     }
 }
