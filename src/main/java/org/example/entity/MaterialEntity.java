@@ -21,7 +21,7 @@ public class MaterialEntity {
     private Long modelId;
     private String name;
     private String color;
-    private String texture;
+    private Long texture;
     private double repeate;
-    private String visible;
+    private boolean visible;
 }

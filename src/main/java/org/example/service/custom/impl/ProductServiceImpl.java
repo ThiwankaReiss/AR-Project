@@ -42,6 +42,7 @@ public class ProductServiceImpl implements ProductService {
         );
         for(MaterialDto dto : productDto.getMaterials()){
             dto.setModelId(entity.getId());
+            dto.setVisible(true);
             materialService.save(dto);
         }
         return entity;
@@ -71,8 +72,12 @@ public class ProductServiceImpl implements ProductService {
     }
 
     private List<Integer> covertToArray(String string){
-        String [] stringArray=string.split(" ");
         List<Integer> intArray=new ArrayList<>();
+        if(string==null|| string.equals("")){
+            return intArray;
+        }
+        String [] stringArray=string.split(" ");
+
         for(String num: stringArray){
             intArray.add(Integer.parseInt(num));
         }
