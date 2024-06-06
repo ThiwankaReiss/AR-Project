@@ -14,5 +14,7 @@ public class OrderDto {
     private UserDto user;
     private double total;
     private String date;
+    private String time;
+    private String status;
     private List<OrderDetailDto> detail;
 }

@@ -22,5 +22,7 @@ public class OrderEntity {
     private Long userId;
     private double total;
     private String date;
+    private String time;
+    private String status;
 
 }

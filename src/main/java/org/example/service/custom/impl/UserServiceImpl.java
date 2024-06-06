@@ -8,7 +8,6 @@ import org.example.service.custom.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -56,5 +55,9 @@ public class UserServiceImpl implements UserService {
             }
         }
         return null;
+    }
+    @Override
+    public UserDto getUserById(Long userId){
+        return mapper.convertValue(repository.findById(userId),UserDto.class);
     }
 }

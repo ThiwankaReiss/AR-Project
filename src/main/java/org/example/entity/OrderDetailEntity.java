@@ -19,6 +19,7 @@ public class OrderDetailEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Long orderId;
+    private Integer amount;
     private double price;
-    private double modalId;
+    private Long modalId;
 }
