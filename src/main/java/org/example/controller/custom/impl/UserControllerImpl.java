@@ -39,5 +39,10 @@ public class UserControllerImpl implements UserController {
     public ResponseDto localHost(){
         return new ResponseDto("Running at Local host");
     }
+    @PostMapping("/forgot")
+    @Override
+    public ResponseDto forgotPassword(@RequestBody ResponseDto dto){
+        return service.forgotPassword(dto);
+    }
 
 }
