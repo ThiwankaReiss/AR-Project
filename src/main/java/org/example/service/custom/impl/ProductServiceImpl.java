@@ -56,7 +56,18 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public boolean delete(Long value) {
-        return false;
+
+        if(repository.findById(value).isPresent()){
+            ProductEntity entity=repository.findById(value).orElse(null);
+            List<Integer> images=covertToArray(entity.getImages());
+            for(Integer i:images){
+                imageService.deleteImage(Long.parseLong(i+""));
+            }
+            materialService.deleteByProductId(value);
+            repository.deleteById(value);
+            return true;
+        }
+         return false;
     }
 
     @Override
@@ -119,9 +130,6 @@ public class ProductServiceImpl implements ProductService {
                 resultList.add(num);
             }
         }
-
-        // Convert the result list to an array
-
 
         return resultList;
     }

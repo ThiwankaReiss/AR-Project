@@ -10,4 +10,6 @@ import java.util.List;
 
 public interface MaterialService extends CrudService<MaterialDto, MaterialEntity> {
     List<MaterialDto> getByModelId(Long modelId);
+
+    void deleteByProductId(Long modelId);
 }

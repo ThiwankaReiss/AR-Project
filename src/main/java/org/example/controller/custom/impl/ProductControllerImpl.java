@@ -20,9 +20,10 @@ public class ProductControllerImpl implements ProductController {
         return service.save(productDto);
     }
 
+    @DeleteMapping("/model/{id}")
     @Override
-    public boolean delete(Long value) {
-        return false;
+    public boolean delete(@PathVariable Long id) {
+        return service.delete(id);
     }
     @GetMapping("/model")
     @Override

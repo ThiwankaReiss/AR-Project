@@ -16,6 +16,8 @@ public class MaterialServiceImpl implements MaterialService {
     ObjectMapper mapper;
     @Autowired
     MaterialRepository repository;
+    @Autowired
+    ImageServiceImpl imageService;
     @Override
     public MaterialEntity save(MaterialDto materialDto) {
         return repository.save( mapper.convertValue(materialDto, MaterialEntity.class));
@@ -38,5 +40,14 @@ public class MaterialServiceImpl implements MaterialService {
             dtos.add(mapper.convertValue(entity,MaterialDto.class));
         }
         return dtos;
+    }
+
+    @Override
+    public void deleteByProductId(Long modelId){
+        List<MaterialEntity> entities=repository.findByModelId(modelId);
+        for (MaterialEntity entity:entities){
+            imageService.deleteImage(entity.getTexture());
+        }
+        repository.deleteByModelId(modelId);
     }
 }
