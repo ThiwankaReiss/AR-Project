@@ -87,18 +87,11 @@ public class OrderServiceImpl implements OrderService {
         return dtos;
     }
     private static String getCurrentTimeFormatted() {
-        // Get the current time
+
         LocalDateTime now = LocalDateTime.now();
-
-        // Define the custom format pattern
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("h.mma");
-
-        // Format the current time
         String formattedTime = now.format(formatter).toLowerCase();
-
-        // Adjust the formatted time to match the example format (e.g., 12.30p.m or 3.00a.m)
         formattedTime = formattedTime.replace("am", "a.m").replace("pm", "p.m");
-
         return formattedTime;
     }
     @Override

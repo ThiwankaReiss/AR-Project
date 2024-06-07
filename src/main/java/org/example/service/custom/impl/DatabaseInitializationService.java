@@ -7,7 +7,6 @@ import org.example.dto.UserDto;
 import org.example.service.custom.ProductService;
 import org.example.service.custom.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -34,8 +33,6 @@ public class DatabaseInitializationService {
         if(productService.getAll().size()<4){
             createProducts();
         }
-
-
     }
 
     private void createUsers(){

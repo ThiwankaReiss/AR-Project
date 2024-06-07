@@ -25,7 +25,6 @@ public class ImageServiceImpl {
         entity.setOriginalName(file.getOriginalFilename());
         String fileExtension = getFileExtension(file.getOriginalFilename());
         ImageEntity savedEntity=repository.save(entity);
-        // Construct the new file name with the desired name and original extension
         String newFileName = savedEntity.getId()+ fileExtension;
         savedEntity.setNewName(newFileName);
         repository.save(savedEntity);
@@ -67,7 +66,7 @@ public class ImageServiceImpl {
         if (lastIndex > 0) {
             return fileName.substring(lastIndex);
         }
-        return ""; // No extension found
+        return "";
     }
    
 }

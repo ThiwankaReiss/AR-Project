@@ -1,6 +1,5 @@
 package org.example.controller;
 
-import java.sql.SQLException;
 import java.util.List;
 
 public interface CrudController<dto,entity>{

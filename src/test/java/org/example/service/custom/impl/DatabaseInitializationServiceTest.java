@@ -1,6 +1,5 @@
 package org.example.service.custom.impl;
 
-import org.example.dto.MaterialDto;
 import org.example.dto.ProductDto;
 import org.example.dto.UserDto;
 import org.example.service.custom.ProductService;
@@ -11,7 +10,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.mockito.ArgumentMatchers.any;

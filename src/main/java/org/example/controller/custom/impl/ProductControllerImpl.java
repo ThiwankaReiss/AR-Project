@@ -4,7 +4,6 @@ import org.example.controller.custom.ProductController;
 import org.example.dto.ProductDto;
 import org.example.entity.ProductEntity;
 import org.example.service.custom.ProductService;
-import org.example.service.custom.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
