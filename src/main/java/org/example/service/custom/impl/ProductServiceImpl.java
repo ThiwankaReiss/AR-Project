@@ -91,15 +91,17 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public ProductDto getProductById(Long id){
         ProductEntity entity=repository.findById(id).orElse(null);
-
-        return new ProductDto(
-                entity.getId(),
-                entity.getPrice(),
-                entity.getName(),
-                entity.getType(),
-                covertToArray(entity.getImages()),
-                materialService.getByModelId(entity.getId())
-        );
+        if(entity!=null){
+            return new ProductDto(
+                    entity.getId(),
+                    entity.getPrice(),
+                    entity.getName(),
+                    entity.getType(),
+                    covertToArray(entity.getImages()),
+                    materialService.getByModelId(entity.getId())
+            );
+        }
+        return null;
     }
 
     private List<Integer> covertToArray(String string){
