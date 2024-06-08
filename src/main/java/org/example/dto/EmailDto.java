@@ -25,7 +25,7 @@ public class EmailDto {
         System.out.println("Enter password");
         // Sender's email address and password
         String senderEmail = "prelanr@gmail.com";
-        String senderPassword = "Password";
+        String senderPassword = "password";
 
 
         // Recipient's email address
